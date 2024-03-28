@@ -1,0 +1,52 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Функция для конкатенации двух языков
+vector<string> concatenateLanguages(const vector<string>& L1, const vector<string>& L2) {
+    vector<string> concatenatedLanguage;
+
+    // Перебираем все цепочки из L1
+    for (const string& str1 : L1) {
+        // Для каждой цепочки из L1 добавляем все цепочки из L2
+        for (const string& str2 : L2) {
+            concatenatedLanguage.push_back(str1 + str2);
+        }
+    }
+
+    return concatenatedLanguage;
+}
+
+int main() {
+    int n1, n2;
+    cout << "Введите количество цепочек в языке L1: ";
+    cin >> n1;
+
+    vector<string> L1(n1);
+    cout << "Введите цепочки языка L1:\n";
+    for (int i = 0; i < n1; ++i) {
+        cin >> L1[i];
+    }
+
+    cout << "Введите количество цепочек в языке L2: ";
+    cin >> n2;
+
+    vector<string> L2(n2);
+    cout << "Введите цепочки языка L2:\n";
+    for (int i = 0; i < n2; ++i) {
+        cin >> L2[i];
+    }
+
+    // Конкатенируем языки L1 и L2
+    vector<string> concatenatedLanguage = concatenateLanguages(L1, L2);
+
+    // Выводим результат
+    cout << "Результат конкатенации языков L1 и L2:\n";
+    for (const string& str : concatenatedLanguage) {
+        cout << str << endl;
+    }
+
+    return 0;
+}
